@@ -9,6 +9,8 @@ fn main() {
     
     let secret_number = rand::thread_rng().gen_range(1,101);
 
+    let mut guesses_count = 1;
+
     println!("Please input your guess!");
     
     loop {
@@ -29,8 +31,10 @@ fn main() {
     
         if check_guess(guess,secret_number){
             println!("Correct!");
+            println!("Guesses: {}",guesses_count);
             break;
         }
+        guesses_count += 1;
     }        
 }
 
