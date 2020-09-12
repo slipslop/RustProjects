@@ -4,33 +4,33 @@ use rand::Rng;
 // above is dependency.
 
 fn main() {
+    
     println!("Guess the number");
+    
+    let secret_number = rand::thread_rng().gen_range(1,101);
 
+    println!("Please input your guess!");
+    
     loop {
 
-            let secret_number = rand::thread_rng().gen_range(1,101);
-        
-            println!("Please input your guess!");
-
-            let mut guess = String::new();
-        
-            io::stdin()
-                // & means reference of a variable.
-                .read_line(&mut guess)
-                .expect("Failed to read line");
-        
-            let guess: u32 = match guess.trim().parse() {
-                Ok(num) => num,
-                Err(_) => continue,
-            };
-        
-            println!("You guessed: {}",guess);
-        
-            if check_guess(guess,secret_number){
-                println!("Correct!");
-                break;
-            }
-
+        let mut guess = String::new();
+    
+        io::stdin()
+            // & means reference of a variable.
+            .read_line(&mut guess)
+            .expect("Failed to read line");
+    
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+    
+        println!("You guessed: {}",guess);
+    
+        if check_guess(guess,secret_number){
+            println!("Correct!");
+            break;
+        }
     }        
 }
 
